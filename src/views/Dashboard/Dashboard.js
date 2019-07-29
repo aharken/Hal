@@ -31,15 +31,15 @@ const brandInfo = getStyle('--info')
 const brandWarning = getStyle('--warning')
 const brandDanger = getStyle('--danger')
 
-// Card Chart 1
+// Card Chart 1- Lighting
 const cardChartData1 = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Energy Usage',
       backgroundColor: brandPrimary,
       borderColor: 'rgba(255,255,255,.55)',
-      data: [65, 59, 84, 84, 51, 55, 40],
+      data: [784, 875, 770, 660, 551, 655, 765],
     },
   ],
 };
@@ -89,15 +89,15 @@ const cardChartOpts1 = {
 }
 
 
-// Card Chart 2
+// Card Chart 0- Thermostat
 const cardChartData2 = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: 'My First dataset',
-      backgroundColor: brandInfo,
+      label: 'Monthly Average Temperature',
+      backgroundColor: brandPrimary,
       borderColor: 'rgba(255,255,255,.55)',
-      data: [1, 18, 9, 17, 34, 22, 11],
+      data: [84, 75, 70, 60, 51, 55, 65],
     },
   ],
 };
@@ -147,15 +147,15 @@ const cardChartOpts2 = {
   },
 };
 
-// Card Chart 3
+// Card Chart 3 - Smart Lock
 const cardChartData3 = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Household Smart Locks',
       backgroundColor: 'rgba(255,255,255,.2)',
       borderColor: 'rgba(255,255,255,.55)',
-      data: [78, 81, 80, 45, 34, 12, 40],
+      data: [1, 2, 3, 3, 3, 4, 4],
     },
   ],
 };
@@ -191,15 +191,15 @@ const cardChartOpts3 = {
   },
 };
 
-// Card Chart 4
+// Card Chart 4 - Cameras
 const cardChartData4 = {
   labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Estimated Days until Battery Replacement',
       backgroundColor: 'rgba(255,255,255,.3)',
       borderColor: 'transparent',
-      data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
+      data: [78, 31, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
     },
   ],
 };
@@ -361,48 +361,38 @@ const sparklineChartOpts = {
 
 // Main Chart
 
-//Random Numbers
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
-var elements = 27;
-var data1 = [];
-var data2 = [];
-var data3 = [];
+var elements = 12;
+var data1 = [750,850,750,650,550,450,550,550, 650,550,450,250];// total = 7,000
+var data2 = [150,100,50,150,200,250,300,350,400,450,400,300];// total = 3,000
+var data3 = [350,300,400,450,500,550,500,450,400,300,200,300];// total = 6,000
 
-for (var i = 0; i <= elements; i++) {
-  data1.push(random(50, 200));
-  data2.push(random(80, 100));
-  data3.push(65);
-}
 
 const mainChart = {
-  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  labels: ['August', 'September', 'October','November','December','January', 'February','March', 'April','May','June','July'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Heating and Conditioning',
       backgroundColor: hexToRgba(brandInfo, 10),
-      borderColor: brandInfo,
+      borderColor: brandSuccess,
       pointHoverBackgroundColor: '#fff',
       borderWidth: 2,
       data: data1,
     },
     {
-      label: 'My Second dataset',
+      label: 'Lighting',
       backgroundColor: 'transparent',
-      borderColor: brandSuccess,
+      borderColor: brandDanger,
       pointHoverBackgroundColor: '#fff',
       borderWidth: 2,
       data: data2,
     },
     {
-      label: 'My Third dataset',
+      label: 'Other',
       backgroundColor: 'transparent',
-      borderColor: brandDanger,
+      borderColor: brandInfo,
       pointHoverBackgroundColor: '#fff',
       borderWidth: 1,
-      borderDash: [8, 5],
       data: data3,
     },
   ],
@@ -438,7 +428,7 @@ const mainChartOpts = {
           beginAtZero: true,
           maxTicksLimit: 5,
           stepSize: Math.ceil(250 / 5),
-          max: 250,
+          max: 1000,
         },
       }],
   },
@@ -493,15 +483,12 @@ class Dashboard extends Component {
                       <i className="icon-settings"></i>
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem disabled>Disabled action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem>Thermostat Information</DropdownItem>
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">70°</div>
+                <div>Average House Temperature</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
@@ -515,17 +502,16 @@ class Dashboard extends Component {
                 <ButtonGroup className="float-right">
                   <Dropdown id='card2' isOpen={this.state.card2} toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
                     <DropdownToggle className="p-0" color="transparent">
-                      <i className="icon-location-pin"></i>
+                      <i className="icon-settings"></i>
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem>Smartlight Information</DropdownItem>
+                      <DropdownItem>Check Energy Usage</DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">10</div>
+                <div>Lights On</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />
@@ -542,14 +528,12 @@ class Dashboard extends Component {
                       <i className="icon-settings"></i>
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem>Smart lock Information</DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">2</div>
+                <div>Locks Unlocked</div>
               </CardBody>
               <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
@@ -566,14 +550,12 @@ class Dashboard extends Component {
                       <i className="icon-settings"></i>
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem>Security Camera Information</DropdownItem>
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">0</div>
+                <div>Security Cameras On</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
@@ -587,16 +569,14 @@ class Dashboard extends Component {
               <CardBody>
                 <Row>
                   <Col sm="5">
-                    <CardTitle className="mb-0">Traffic</CardTitle>
-                    <div className="small text-muted">November 2015</div>
+                    <CardTitle className="mb-0">Household Energy Usage</CardTitle>
+                    <div className="small text-muted">July 2019</div>
                   </Col>
                   <Col sm="7" className="d-none d-sm-inline-block">
-                    <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
-                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
+                   <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
                       <ButtonGroup className="mr-3" aria-label="First group">
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Year</Button>
                       </ButtonGroup>
                     </ButtonToolbar>
                   </Col>
@@ -608,516 +588,22 @@ class Dashboard extends Component {
               <CardFooter>
                 <Row className="text-center">
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Visits</div>
-                    <strong>29.703 Users (40%)</strong>
-                    <Progress className="progress-xs mt-2" color="success" value="40" />
-                  </Col>
-                  <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
-                    <div className="text-muted">Unique</div>
-                    <strong>24.093 Users (20%)</strong>
-                    <Progress className="progress-xs mt-2" color="info" value="20" />
+                    <div className="text-muted">Heating and Conditioning</div>
+                    <strong>7,000 kwh (44%)</strong>
+                    <Progress className="progress-xs mt-2" color="success" value="120" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Pageviews</div>
-                    <strong>78.706 Views (60%)</strong>
-                    <Progress className="progress-xs mt-2" color="warning" value="60" />
+                    <div className="text-muted">Lighting</div>
+                    <strong>3,000 kwh (20%)</strong>
+                    <Progress className="progress-xs mt-2" color="danger" value="120" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">New Users</div>
-                    <strong>22.123 Users (80%)</strong>
-                    <Progress className="progress-xs mt-2" color="danger" value="80" />
-                  </Col>
-                  <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
-                    <div className="text-muted">Bounce Rate</div>
-                    <strong>Average Rate (40.15%)</strong>
-                    <Progress className="progress-xs mt-2" color="primary" value="40" />
+                    <div className="text-muted">Other</div>
+                    <strong>6,000 kwh (36%)</strong>
+                    <Progress className="progress-xs mt-2" color="primary" value="120" />
                   </Col>
                 </Row>
               </CardFooter>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
-              <Widget03 dataBox={() => ({ variant: 'facebook', friends: '89k', feeds: '459' })} >
-                <div className="chart-wrapper">
-                  <Line data={makeSocialBoxData(0)} options={socialChartOpts} height={90} />
-                </div>
-              </Widget03>
-            </Suspense>
-          </Col>
-
-          <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
-              <Widget03 dataBox={() => ({ variant: 'twitter', followers: '973k', tweets: '1.792' })} >
-                <div className="chart-wrapper">
-                  <Line data={makeSocialBoxData(1)} options={socialChartOpts} height={90} />
-                </div>
-              </Widget03>
-            </Suspense>
-          </Col>
-
-          <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
-              <Widget03 dataBox={() => ({ variant: 'linkedin', contacts: '500+', feeds: '292' })} >
-                <div className="chart-wrapper">
-                  <Line data={makeSocialBoxData(2)} options={socialChartOpts} height={90} />
-                </div>
-              </Widget03>
-            </Suspense>
-          </Col>
-
-          <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
-              <Widget03 dataBox={() => ({ variant: 'google-plus', followers: '894', circles: '92' })} >
-                <div className="chart-wrapper">
-                  <Line data={makeSocialBoxData(3)} options={socialChartOpts} height={90} />
-                </div>
-              </Widget03>
-            </Suspense>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <Card>
-              <CardHeader>
-                Traffic {' & '} Sales
-              </CardHeader>
-              <CardBody>
-                <Row>
-                  <Col xs="12" md="6" xl="6">
-                    <Row>
-                      <Col sm="6">
-                        <div className="callout callout-info">
-                          <small className="text-muted">New Clients</small>
-                          <br />
-                          <strong className="h4">9,123</strong>
-                          <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(0, brandPrimary)} options={sparklineChartOpts} width={100} height={30} />
-                          </div>
-                        </div>
-                      </Col>
-                      <Col sm="6">
-                        <div className="callout callout-danger">
-                          <small className="text-muted">Recurring Clients</small>
-                          <br />
-                          <strong className="h4">22,643</strong>
-                          <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(1, brandDanger)} options={sparklineChartOpts} width={100} height={30} />
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                    <hr className="mt-0" />
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                          Monday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="34" />
-                        <Progress className="progress-xs" color="danger" value="78" />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        Tuesday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="56" />
-                        <Progress className="progress-xs" color="danger" value="94" />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        Wednesday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="12" />
-                        <Progress className="progress-xs" color="danger" value="67" />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        Thursday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="43" />
-                        <Progress className="progress-xs" color="danger" value="91" />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        Friday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="22" />
-                        <Progress className="progress-xs" color="danger" value="73" />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        Saturday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="53" />
-                        <Progress className="progress-xs" color="danger" value="82" />
-                      </div>
-                    </div>
-                    <div className="progress-group mb-4">
-                      <div className="progress-group-prepend">
-                        <span className="progress-group-text">
-                        Sunday
-                        </span>
-                      </div>
-                      <div className="progress-group-bars">
-                        <Progress className="progress-xs" color="info" value="9" />
-                        <Progress className="progress-xs" color="danger" value="69" />
-                      </div>
-                    </div>
-                    <div className="legend text-center">
-                      <small>
-                        <sup className="px-1"><Badge pill color="info">&nbsp;</Badge></sup>
-                        New clients
-                        &nbsp;
-                        <sup className="px-1"><Badge pill color="danger">&nbsp;</Badge></sup>
-                        Recurring clients
-                      </small>
-                    </div>
-                  </Col>
-                  <Col xs="12" md="6" xl="6">
-                    <Row>
-                      <Col sm="6">
-                        <div className="callout callout-warning">
-                          <small className="text-muted">Pageviews</small>
-                          <br />
-                          <strong className="h4">78,623</strong>
-                          <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(2, brandWarning)} options={sparklineChartOpts} width={100} height={30} />
-                          </div>
-                        </div>
-                      </Col>
-                      <Col sm="6">
-                        <div className="callout callout-success">
-                          <small className="text-muted">Organic</small>
-                          <br />
-                          <strong className="h4">49,123</strong>
-                          <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(3, brandSuccess)} options={sparklineChartOpts} width={100} height={30} />
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                    <hr className="mt-0" />
-                    <ul>
-                      <div className="progress-group">
-                        <div className="progress-group-header">
-                          <i className="icon-user progress-group-icon"></i>
-                          <span className="title">Male</span>
-                          <span className="ml-auto font-weight-bold">43%</span>
-                        </div>
-                        <div className="progress-group-bars">
-                          <Progress className="progress-xs" color="warning" value="43" />
-                        </div>
-                      </div>
-                      <div className="progress-group mb-5">
-                        <div className="progress-group-header">
-                          <i className="icon-user-female progress-group-icon"></i>
-                          <span className="title">Female</span>
-                          <span className="ml-auto font-weight-bold">37%</span>
-                        </div>
-                        <div className="progress-group-bars">
-                          <Progress className="progress-xs" color="warning" value="37" />
-                        </div>
-                      </div>
-                      <div className="progress-group">
-                        <div className="progress-group-header">
-                          <i className="icon-globe progress-group-icon"></i>
-                          <span className="title">Organic Search</span>
-                          <span className="ml-auto font-weight-bold">191,235 <span className="text-muted small">(56%)</span></span>
-                        </div>
-                        <div className="progress-group-bars">
-                          <Progress className="progress-xs" color="success" value="56" />
-                        </div>
-                      </div>
-                      <div className="progress-group">
-                        <div className="progress-group-header">
-                          <i className="icon-social-facebook progress-group-icon"></i>
-                          <span className="title">Facebook</span>
-                          <span className="ml-auto font-weight-bold">51,223 <span className="text-muted small">(15%)</span></span>
-                        </div>
-                        <div className="progress-group-bars">
-                          <Progress className="progress-xs" color="success" value="15" />
-                        </div>
-                      </div>
-                      <div className="progress-group">
-                        <div className="progress-group-header">
-                          <i className="icon-social-twitter progress-group-icon"></i>
-                          <span className="title">Twitter</span>
-                          <span className="ml-auto font-weight-bold">37,564 <span className="text-muted small">(11%)</span></span>
-                        </div>
-                        <div className="progress-group-bars">
-                          <Progress className="progress-xs" color="success" value="11" />
-                        </div>
-                      </div>
-                      <div className="progress-group">
-                        <div className="progress-group-header">
-                          <i className="icon-social-linkedin progress-group-icon"></i>
-                          <span className="title">LinkedIn</span>
-                          <span className="ml-auto font-weight-bold">27,319 <span className="text-muted small">(8%)</span></span>
-                        </div>
-                        <div className="progress-group-bars">
-                          <Progress className="progress-xs" color="success" value="8" />
-                        </div>
-                      </div>
-                      <div className="divider text-center">
-                        <Button color="link" size="sm" className="text-muted" data-toggle="tooltip" data-placement="top"
-                                title="" data-original-title="show more"><i className="icon-options"></i></Button>
-                      </div>
-                    </ul>
-                  </Col>
-                </Row>
-                <br />
-                <Table hover responsive className="table-outline mb-0 d-none d-sm-table">
-                  <thead className="thead-light">
-                  <tr>
-                    <th className="text-center"><i className="icon-people"></i></th>
-                    <th>User</th>
-                    <th className="text-center">Country</th>
-                    <th>Usage</th>
-                    <th className="text-center">Payment Method</th>
-                    <th>Activity</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td className="text-center">
-                      <div className="avatar">
-                        <img src={'assets/img/avatars/1.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                        <span className="avatar-status badge-success"></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>Yiorgos Avraamu</div>
-                      <div className="small text-muted">
-                        <span>New</span> | Registered: Jan 1, 2015
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <i className="flag-icon flag-icon-us h4 mb-0" title="us" id="us"></i>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-left">
-                          <strong>50%</strong>
-                        </div>
-                        <div className="float-right">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                        </div>
-                      </div>
-                      <Progress className="progress-xs" color="success" value="50" />
-                    </td>
-                    <td className="text-center">
-                      <i className="fa fa-cc-mastercard" style={{ fontSize: 24 + 'px' }}></i>
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
-                      <strong>10 sec ago</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <div className="avatar">
-                        <img src={'assets/img/avatars/2.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                        <span className="avatar-status badge-danger"></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>Avram Tarasios</div>
-                      <div className="small text-muted">
-
-                        <span>Recurring</span> | Registered: Jan 1, 2015
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <i className="flag-icon flag-icon-br h4 mb-0" title="br" id="br"></i>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-left">
-                          <strong>10%</strong>
-                        </div>
-                        <div className="float-right">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                        </div>
-                      </div>
-                      <Progress className="progress-xs" color="info" value="10" />
-                    </td>
-                    <td className="text-center">
-                      <i className="fa fa-cc-visa" style={{ fontSize: 24 + 'px' }}></i>
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
-                      <strong>5 minutes ago</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <div className="avatar">
-                        <img src={'assets/img/avatars/3.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                        <span className="avatar-status badge-warning"></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>Quintin Ed</div>
-                      <div className="small text-muted">
-                        <span>New</span> | Registered: Jan 1, 2015
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <i className="flag-icon flag-icon-in h4 mb-0" title="in" id="in"></i>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-left">
-                          <strong>74%</strong>
-                        </div>
-                        <div className="float-right">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                        </div>
-                      </div>
-                      <Progress className="progress-xs" color="warning" value="74" />
-                    </td>
-                    <td className="text-center">
-                      <i className="fa fa-cc-stripe" style={{ fontSize: 24 + 'px' }}></i>
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
-                      <strong>1 hour ago</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <div className="avatar">
-                        <img src={'assets/img/avatars/4.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                        <span className="avatar-status badge-secondary"></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>Enéas Kwadwo</div>
-                      <div className="small text-muted">
-                        <span>New</span> | Registered: Jan 1, 2015
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <i className="flag-icon flag-icon-fr h4 mb-0" title="fr" id="fr"></i>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-left">
-                          <strong>98%</strong>
-                        </div>
-                        <div className="float-right">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                        </div>
-                      </div>
-                      <Progress className="progress-xs" color="danger" value="98" />
-                    </td>
-                    <td className="text-center">
-                      <i className="fa fa-paypal" style={{ fontSize: 24 + 'px' }}></i>
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
-                      <strong>Last month</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <div className="avatar">
-                        <img src={'assets/img/avatars/5.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                        <span className="avatar-status badge-success"></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>Agapetus Tadeáš</div>
-                      <div className="small text-muted">
-                        <span>New</span> | Registered: Jan 1, 2015
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <i className="flag-icon flag-icon-es h4 mb-0" title="es" id="es"></i>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-left">
-                          <strong>22%</strong>
-                        </div>
-                        <div className="float-right">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                        </div>
-                      </div>
-                      <Progress className="progress-xs" color="info" value="22" />
-                    </td>
-                    <td className="text-center">
-                      <i className="fa fa-google-wallet" style={{ fontSize: 24 + 'px' }}></i>
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
-                      <strong>Last week</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <div className="avatar">
-                        <img src={'assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                        <span className="avatar-status badge-danger"></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>Friderik Dávid</div>
-                      <div className="small text-muted">
-                        <span>New</span> | Registered: Jan 1, 2015
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <i className="flag-icon flag-icon-pl h4 mb-0" title="pl" id="pl"></i>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-left">
-                          <strong>43%</strong>
-                        </div>
-                        <div className="float-right">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                        </div>
-                      </div>
-                      <Progress className="progress-xs" color="success" value="43" />
-                    </td>
-                    <td className="text-center">
-                      <i className="fa fa-cc-amex" style={{ fontSize: 24 + 'px' }}></i>
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
-                      <strong>Yesterday</strong>
-                    </td>
-                  </tr>
-                  </tbody>
-                </Table>
-              </CardBody>
             </Card>
           </Col>
         </Row>
