@@ -3,15 +3,15 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'icon-speedometer',
+      icon: 'icon-home',
       badge: {
         variant: 'info',
-        text: 'NEW',
+        //text: 'NEW',
       },
     },
     {
       title: true,
-      name: 'Theme',
+      name: 'Comfort',
       wrapper: {            // optional wrapper object
         element: '',        // required valid HTML5 element tag
         attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
@@ -19,26 +19,93 @@ export default {
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
     {
-      name: 'Colors',
+      name: 'Thermostat',
       url: '/theme/colors',
-      icon: 'icon-drop',
+      icon: 'icon-sun', //Need to correct icon
+      children: [
+        {
+          name: 'Overview',
+          url: '/thermostat/overview',
+        },
+        {
+          name: 'Zone 1',
+          url: '/thermostat/zone1',
+        },
+        {
+          name: 'Zone 2',
+          url: '/thermostat/zone2',
+        },
+      ],
     },
     {
-      name: 'Typography',
-      url: '/theme/typography',
-      icon: 'icon-pencil',
+      name: 'Lighting',
+      url: '/theme/colors',
+      icon: 'icon-lightbulb', //Need to correct icon
+      children: [
+        {
+          name: 'Overview',
+          url: '/lighting/overview',
+        },
+        {
+          name: 'Room 1',
+          url: '/lighting/room1',
+        },
+        {
+          name: 'Room 2',
+          url: '/lighting/room2',
+        },
+      ],
     },
     {
       title: true,
-      name: 'Components',
+      name: 'Safety',
       wrapper: {
         element: '',
         attributes: {},
       },
+      class: '',
     },
     {
-      name: 'Base',
-      url: '/base',
+      name: 'CCTV System',
+      url: '/theme/colors',
+      //icon: 'icon-puzzle',
+      children: [
+        {
+          name: 'Overview',
+          url: '/cctvsystem/overview',
+        },
+        {
+          name: 'Camera 1',
+          url: '/cctvsystem/camera1',
+        },
+        {
+          name: 'Camera 2',
+          url: '/cctvsystem/camera2',
+        },
+      ],
+    },
+    {
+      name: 'Smart Locks',
+      url: '/theme/colors',
+      //icon: 'icon-puzzle',
+      children: [
+        {
+          name: 'Overview',
+          url: '/smartlocks/overview',
+        },
+        {
+          name: 'Front Door',
+          url: '/homesecurity/frontdoor',
+        },
+        {
+          name: 'Back Door',
+          url: '/homesecurity/backdoor',
+        },
+      ],
+    },
+    {
+      name: 'Information',
+      url: '/theme/colors',
       icon: 'icon-puzzle',
       children: [
         {
