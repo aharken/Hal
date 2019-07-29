@@ -1,5 +1,13 @@
 import React from 'react';
 
+/*
+  CUSTOM ROUTES
+*/
+const Thermostat = React.lazy(() => import('./views/Comfort/Thermostat'));
+
+/*
+  TEMPLATE ROUTES
+*/
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
 const Cards = React.lazy(() => import('./views/Base/Cards'));
 const Carousels = React.lazy(() => import('./views/Base/Carousels'));
@@ -43,6 +51,7 @@ const routes = [
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
+  { path: '/comfort/thermostat', name: 'Thermostat', component: Thermostat },
   { path: '/base', exact: true, name: 'Base', component: Cards },
   { path: '/base/cards', name: 'Cards', component: Cards },
   { path: '/base/forms', name: 'Forms', component: Forms },

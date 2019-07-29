@@ -25,15 +25,15 @@ export default {
       children: [
         {
           name: 'Overview',
-          url: '/thermostat/overview',
+          url: '/comfort/thermostat',
         },
         {
           name: 'Zone 1',
-          url: '/thermostat/zone1',
+          url: '/comfort/thermostat/zone1',
         },
         {
           name: 'Zone 2',
-          url: '/thermostat/zone2',
+          url: '/comfort/thermostat/zone2',
         },
       ],
     },
@@ -44,7 +44,7 @@ export default {
       children: [
         {
           name: 'Overview',
-          url: '/lighting/overview',
+          url: '/lighting',
         },
         {
           name: 'Room 1',
