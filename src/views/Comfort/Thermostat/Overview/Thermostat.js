@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { AppSwitch } from '@coreui/react';
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { Bar, Line } from 'react-chartjs-2';
 
 class Thermostat extends Component {
   render() {
@@ -12,8 +15,16 @@ class Thermostat extends Component {
                 <h2>Thermostat Overview</h2>
               </CardHeader>
               <CardBody>
+                <div>
+                <p1>You have two T2 Honeywell thermostats in your house hold, they were installed June 3rd 2019</p1>
+                <br/>
+                <p1>To find out more information on each of your theromstats go to the dashboard and select the zone of that device</p1>
+                < br />
+                < br />
+              <button class="btn btn-primary">Add Thermostat</button>
+              <button class="btn btn-primary">Remove Thermostat</button>
                 
-                <p1>You have two T2 Honeywell thermostats in your house hold, they were installed June 3rd 2019.</p1>
+                </div>
               </CardBody>
             </Card>
             <Card>
