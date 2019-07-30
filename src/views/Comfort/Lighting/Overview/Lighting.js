@@ -12,7 +12,7 @@ class Lighting extends Component {
                 <i className="fa fa-align-justify"></i><strong>Lighting</strong>
               </CardHeader>
               <CardBody>
-                Lighting
+                <img src="/assets/img/lightbulb.gif"></img>
               </CardBody>
             </Card>
           </Col>

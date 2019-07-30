@@ -483,7 +483,7 @@ class Dashboard extends Component {
                       <i className="icon-settings"></i>
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Thermostat Information</DropdownItem>
+                      <a href='#/thermostat/overview'><DropdownItem>Thermostat Information</DropdownItem></a>
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
@@ -505,7 +505,7 @@ class Dashboard extends Component {
                       <i className="icon-settings"></i>
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Smartlight Information</DropdownItem>
+                      <a href="#/lighting/overview"><DropdownItem>Smartlight Information</DropdownItem></a>
                       <DropdownItem>Check Energy Usage</DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
