@@ -1,5 +1,35 @@
 import React, { Component } from 'react';
 import {Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { AppSwitch } from '@coreui/react';
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { Bar, Line } from 'react-chartjs-2';
+
+const line = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  datasets: [
+    {
+      label: 'Average Energy Usage',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: [20, 35, 40, 42, 45, 70, 80, 78, 79, 65, 33, 18],
+    },
+  ],
+};
 
 class ThermZone1 extends Component {
   render() {
@@ -9,11 +39,67 @@ class ThermZone1 extends Component {
           <Col xs="12">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Thermostat</strong>
+              <div class="p-3 mb-2 bg-success text-white">
+                <strong>Thermostat | Room 1</strong>
+                <div className="card-header-actions">
+                  <AppSwitch className={'float-right mb-0'} label checked color={'info'} size={'sm'}/>
+                </div>
+                </div>
               </CardHeader>
               <CardBody>
-                <h1>ThermZone1</h1>
-                
+                <div class="row">
+                <div class="col-sm">
+                <Card>
+                  <CardBody>
+                  <div class="card-body">
+                    <h4 class="card-title">Current Temperature</h4>
+                    <button class="btn btn-primary"><i class="cui-chevron-top"></i></button>
+                    <h5 class="card-text">78° F</h5>
+                    <button class="btn btn-primary"><i class="cui-chevron-bottom"></i></button>
+                  </div>
+                  </CardBody>
+                </Card>
+                </div>
+                <div class="col-sm">
+                <Card>
+                  <CardBody>
+                  <div class="card-body">
+                    <h4 class="card-title">Mode</h4>
+                    <button class="btn btn-primary">Heat</button>
+                    <button class="btn btn-primary">Cool</button>
+                    </div>
+                  </CardBody>
+                </Card>
+                </div>
+                <div class="col-sm">
+                <Card>
+                  <CardBody>
+                  <div class="card-body">
+                    <h4 class="card-title"><i class="cui-sun"></i> Outside Temperature (85027)</h4>                    
+                    <h5 class="card-text">105° F</h5>                  
+                    </div>
+                  </CardBody>
+                </Card>
+                </div>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs="12">
+            <Card>
+              <CardBody>
+                <Card>
+                  <CardHeader>
+                    Average Energy Usage 2018
+                  </CardHeader>
+                  <CardBody>
+                    <div className="chart-wrapper">
+                      <Line data={line}/>
+                    </div>
+                  </CardBody>
+                </Card>
               </CardBody>
             </Card>
           </Col>

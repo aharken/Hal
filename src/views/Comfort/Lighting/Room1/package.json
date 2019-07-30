@@ -1,0 +1,6 @@
+{
+  "name": "LightRoom1",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./LightRoom1.js"
+}
