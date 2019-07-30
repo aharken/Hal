@@ -1,0 +1,6 @@
+{
+  "name": "Thermostat",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Thermostat.js"
+}
