@@ -12,7 +12,7 @@ class Thermostat extends Component {
                 <i className="fa fa-align-justify"></i><strong>Thermostat</strong>
               </CardHeader>
               <CardBody>
-                Hello
+                Thermostat
               </CardBody>
             </Card>
           </Col>

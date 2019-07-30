@@ -3,7 +3,9 @@ import React from 'react';
 /*
   CUSTOM ROUTES
 */
-const Thermostat = React.lazy(() => import('./views/Comfort/Thermostat'));
+const Thermostat = React.lazy(() => import('./views/Comfort/Thermostat/Overview/Thermostat'));
+const ThermZone1 = React.lazy(() => import('./views/Comfort/Thermostat/Zone1/ThermZone1'));
+const ThermZone2 = React.lazy(() => import('./views/Comfort/Thermostat/Zone2/ThermZone2'));
 
 /*
   TEMPLATE ROUTES
@@ -51,7 +53,6 @@ const routes = [
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
-  { path: '/comfort/thermostat', name: 'Thermostat', component: Thermostat },
   { path: '/base', exact: true, name: 'Base', component: Cards },
   { path: '/base/cards', name: 'Cards', component: Cards },
   { path: '/base/forms', name: 'Forms', component: Forms },
@@ -88,6 +89,9 @@ const routes = [
   { path: '/charts', name: 'Charts', component: Charts },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
+  { path: '/thermostat/overview', name: 'Thermostat', component: Thermostat },
+  { path: '/thermostat/zone1', name: 'ThermZone1', component: ThermZone1 },
+  { path: '/thermostat/zone2', name: 'ThermZone2', component: ThermZone2 },
 ];
 
 export default routes;
