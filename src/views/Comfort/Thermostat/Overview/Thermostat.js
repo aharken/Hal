@@ -8,7 +8,7 @@ const line = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   datasets: [
     {
-      label: 'Average Energy Usage',
+      label:'Average power usage in Zone 1' ,
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -26,7 +26,7 @@ const line = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [20, 35, 40, 42, 45, 70, 80, 78, 79, 65, 33, 18],
+      data: [75,85,75,65,55,45,55,55, 65,55,45,25],
     },
   ],
 };
@@ -43,7 +43,7 @@ class Thermostat extends Component {
           </CardHeader>
           <CardBody>
             <div className="chart-wrapper">
-              <Line data={line}/>
+              <Line data={line} height={100}/>
             </div>
           </CardBody>
         </Card>
@@ -89,11 +89,14 @@ class Thermostat extends Component {
             <div class="col-sm">
             <Card>
               <CardHeader>
-                <h2>Other</h2>
+                <h2>Thermostat Information</h2>
               </CardHeader>
               <CardBody>
-                <p3>For more device information either go to the dashboard tabs or follow this </p3>
-                <a href="https://www.honeywellstore.com/store/category/thermostats.htm">Link</a>
+                <p3>For more device information 
+                  <a href="https://www.honeywellstore.com/store/category/thermostats.htm"> click here. </a>
+                </p3>
+                <br/>
+                <p3>You appear to have 67 days left of battery life.</p3>
               </CardBody>
             </Card>
             </div>
