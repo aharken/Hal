@@ -12,7 +12,8 @@ class ThermZone1 extends Component {
                 <i className="fa fa-align-justify"></i><strong>Thermostat</strong>
               </CardHeader>
               <CardBody>
-                ThermZone1
+                <h1>ThermZone1</h1>
+                
               </CardBody>
             </Card>
           </Col>
