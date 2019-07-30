@@ -6,6 +6,9 @@ import React from 'react';
 const Thermostat = React.lazy(() => import('./views/Comfort/Thermostat/Overview/Thermostat'));
 const ThermZone1 = React.lazy(() => import('./views/Comfort/Thermostat/Zone1/ThermZone1'));
 const ThermZone2 = React.lazy(() => import('./views/Comfort/Thermostat/Zone2/ThermZone2'));
+const Lighting = React.lazy(() => import('./views/Comfort/Lighting/Overview/Lighting'));
+const LightRoom1 = React.lazy(() => import('./views/Comfort/Lighting/Room1/LightRoom1'));
+const LightRoom2 = React.lazy(() => import('./views/Comfort/Lighting/Room2/LightRoom2'));
 
 /*
   TEMPLATE ROUTES
@@ -92,6 +95,9 @@ const routes = [
   { path: '/thermostat/overview', name: 'Thermostat', component: Thermostat },
   { path: '/thermostat/zone1', name: 'ThermZone1', component: ThermZone1 },
   { path: '/thermostat/zone2', name: 'ThermZone2', component: ThermZone2 },
+  { path: '/lighting/overview', name: 'Lighting', component: Lighting },
+  { path: '/lighting/room1', name: 'LightRoom1', component: LightRoom1 },
+  { path: '/lighting/room2', name: 'LightRoom2', component: LightRoom2 },
 ];
 
 export default routes;
