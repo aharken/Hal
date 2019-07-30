@@ -4,12 +4,55 @@ import { AppSwitch } from '@coreui/react';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { Bar, Line } from 'react-chartjs-2';
 
+const line = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  datasets: [
+    {
+      label: 'Average Energy Usage',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: [20, 35, 40, 42, 45, 70, 80, 78, 79, 65, 33, 18],
+    },
+  ],
+};
+
 class Thermostat extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-        <Row>
+      <Row>
+        <Col xs="12">
+        <Card>
+          <CardHeader>
+            Average Energy Usage 2018
+          </CardHeader>
+          <CardBody>
+            <div className="chart-wrapper">
+              <Line data={line}/>
+            </div>
+          </CardBody>
+        </Card>
+        </Col>
+      </Row>
+      <Row>
           <Col xs="12">
+            <div class="row">
+            <div class="col-sm">
             <Card>
               <CardHeader>
                 <h2>Thermostat Overview</h2>
@@ -27,9 +70,11 @@ class Thermostat extends Component {
                 </div>
               </CardBody>
             </Card>
+            </div>
+            <div class="col-sm">
             <Card>
               <CardHeader>
-                <h2>Energy Effiency:</h2>
+                <h2>Energy Effiency</h2>
               </CardHeader>
               <CardBody>
                 <p2 style={{color:'red'}}>You have overall low effiency</p2>
@@ -40,6 +85,8 @@ class Thermostat extends Component {
                 <p4> to get more information on how to be more energy effiencent</p4>
               </CardBody>
             </Card>
+            </div>
+            <div class="col-sm">
             <Card>
               <CardHeader>
                 <h2>Other</h2>
@@ -49,6 +96,8 @@ class Thermostat extends Component {
                 <a href="https://www.honeywellstore.com/store/category/thermostats.htm">Link</a>
               </CardBody>
             </Card>
+            </div>
+            </div>
           </Col>
         </Row>
       </div>

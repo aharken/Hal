@@ -36,12 +36,34 @@ class ThermZone2 extends Component {
     super(props);
     this.state = {
       currentTemp: 78,
-      ThermHeadState: "p-3 mb-2 bg-success text-white"
+      ThermHeadState: "p-3 mb-2 bg-success text-white",
+      IsCool: true,
+      HeatClass: "btn btn-primary bg-dark",
+      CoolClass: "btn btn-primary bg-success"
     };
 
     this.handleDownClick = this.handleDownClick.bind(this);
     this.handleUpClick = this.handleUpClick.bind(this);
     this.toggleOn = this.toggleOn.bind(this);
+    this.modeClick = this.modeClick.bind(this);
+  }
+
+  modeClick() {
+    if (this.state.IsCool) {
+      //Make hot
+      this.setState (state => ({
+        HeatClass: "btn btn-primary bg-success",
+        CoolClass: "btn btn-primary bg-dark",
+        IsCool: false,
+      }))
+    }
+    else {
+      this.setState (state => ({
+        HeatClass: "btn btn-primary bg-dark",
+        CoolClass: "btn btn-primary bg-success",
+        IsCool: true,
+      }))
+    }
   }
 
   toggleOn() {
@@ -100,8 +122,8 @@ class ThermZone2 extends Component {
                   <CardBody>
                   <div class="card-body">
                     <h4 class="card-title">Mode</h4>
-                    <button class="btn btn-primary">Heat</button>
-                    <button class="btn btn-primary">Cool</button>
+                    <button class={this.state.HeatClass} onClick={this.modeClick}>Heat</button>
+                    <button class={this.state.CoolClass} onClick={this.modeClick}>Cool</button>
                     </div>
                   </CardBody>
                 </Card>
