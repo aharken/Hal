@@ -31,7 +31,43 @@ const line = {
   ],
 };
 
+
 class ThermZone1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTemp: 78,
+      ThermHeadState: "p-3 mb-2 bg-success text-white"
+    };
+
+    this.handleDownClick = this.handleDownClick.bind(this);
+    this.handleUpClick = this.handleUpClick.bind(this);
+    this.toggleOn = this.toggleOn.bind(this);
+  }
+
+  toggleOn() {
+    if (this.state.ThermHeadState == "p-3 mb-2 bg-success text-white") {
+      this.setState (state => ({
+        ThermHeadState: "p-3 mb-2 bg-dark text-white"
+      }))}
+    else {// (this.state.ThermHeadState = "p-3 mb-2 bg-dark text-white") {
+      this.setState (state => ({
+        ThermHeadState: "p-3 mb-2 bg-success text-white"
+      }))}
+  }
+
+  handleUpClick(){
+    this.setState (state => ({
+      currentTemp: state.currentTemp + 1
+    }));
+  }
+
+  handleDownClick() {
+    this.setState (state => ({
+      currentTemp: state.currentTemp - 1
+    }));
+  }
+  
   render() {
     return (
       <div className="animated fadeIn">
@@ -39,10 +75,10 @@ class ThermZone1 extends Component {
           <Col xs="12">
             <Card>
               <CardHeader>
-              <div class="p-3 mb-2 bg-success text-white">
+              <div class={this.state.ThermHeadState}>
                 <strong>Thermostat | Room 1</strong>
                 <div className="card-header-actions">
-                  <AppSwitch className={'float-right mb-0'} label checked color={'info'} size={'sm'}/>
+                  <AppSwitch className={'float-right mb-0'} label checked color={'info'} size={'sm'}  onClick={this.toggleOn}/>
                 </div>
                 </div>
               </CardHeader>
@@ -53,9 +89,9 @@ class ThermZone1 extends Component {
                   <CardBody>
                   <div class="card-body">
                     <h4 class="card-title">Current Temperature</h4>
-                    <button class="btn btn-primary"><i class="cui-chevron-top"></i></button>
-                    <h5 class="card-text">78° F</h5>
-                    <button class="btn btn-primary"><i class="cui-chevron-bottom"></i></button>
+                    <button class="btn btn-primary" onClick={this.handleUpClick}><i class="cui-chevron-top"></i></button>
+                    <h5 class="card-text">{this.state.currentTemp}° F</h5>
+                    <button class="btn btn-primary" onClick={this.handleDownClick}><i class="cui-chevron-bottom"></i></button>
                   </div>
                   </CardBody>
                 </Card>
