@@ -81,7 +81,7 @@ class Thermostat extends Component {
                < br />
 
                 <p2>Click this </p2>
-                <a href="https://tenor.com/search/youre-fucked-gifs">Link</a>
+                <a href="https://www.wired.com/story/how-to-make-your-home-energy-efficient/">Link</a>
                 <p4> to get more information on how to be more energy effiencent</p4>
               </CardBody>
             </Card>
